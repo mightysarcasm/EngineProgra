@@ -1,21 +1,19 @@
-#pragma once
-
 #include <SFML/Graphics.hpp>
-#include "CollisionDetection.h"
-#include "Player.h"
+#include "Character.h"
+#include "Collision.h"
 
-class Player;
-class Enemy {
+class Enemy : public Character {
 public:
-	Enemy();
+	Enemy(sf::Texture* texture, sf::Vector2f size, sf::Vector2f position, float speed,float jumpHeight, float jumpTime,float gravity);
+	void update(float deltaTime);
+	void setTextureRect(sf::IntRect rect);
 
-	void setPosition(float x, float y);
-	void move(sf::Vector2f& movement);
-	sf::Sprite& getSprite();
-	sf::FloatRect getBoundingBox() const;
-	bool checkCollision(Player& player);
-	sf::RectangleShape mShape;
+	sf::Sprite getSprite();
+	Collision& getCollision(){return m_collision;}
 
 
 private:
+	Collision m_collision;
+
+	float m_gravity;
 };

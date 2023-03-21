@@ -1,9 +1,4 @@
 #include "Background.h"
 
-Background::Background(sf::Texture& texture) {
-	mSprite.setTexture(texture);
-}
-
-void Background::draw(sf::RenderWindow& window) {
-	window.draw(mSprite);
+Background::Background(sf::Texture* texture, sf::Vector2u windowSize) : GameObject(texture, sf::Vector2f(windowSize), sf::Vector2f(0, 0)) {
 }
